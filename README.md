@@ -17,13 +17,21 @@ Open `index.html` in a modern web browser. Keep `swim-logic.js` in the same fold
 
 ## Run tests
 
-Install Node.js 18 or later, then run this command from the repository root:
+Install Node.js 22 or later, then run the unit tests from the repository root:
 
 ```sh
-node --test
+npm install
+npm test
 ```
 
-The tests use Node.js's built-in test runner; no third-party test framework is needed.
+Browser-level checks use Playwright and Chromium:
+
+```sh
+npx playwright install chromium
+npm run test:e2e
+```
+
+The unit tests use Node.js's built-in test runner. The Playwright tests create synthetic sample sessions at runtime and do not use personal Notion exports or real training data. GitHub Actions runs both suites on pushes and pull requests to `main`.
 
 ## Data and privacy
 
@@ -31,4 +39,4 @@ Import a CSV export to review your own sessions. Keep personal training data and
 
 ## Status
 
-The dashboard is a static HTML application. Unit tests are included; browser-level Playwright testing and GitHub Pages deployment are planned.
+The dashboard is a static HTML application. Unit and Playwright browser tests are included. GitHub Pages deployment is the next planned step.
